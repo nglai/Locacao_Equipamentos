@@ -3,6 +3,7 @@ import Router from "express"
 
 const routerEquip = Router();
 
+
 routerEquip.get('/equipamentos', getEquip);
 
 routerEquip.post('/equipamentos', postEquip)
