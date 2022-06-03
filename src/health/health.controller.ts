@@ -1,6 +1,5 @@
-import { request } from 'http';
-import { HealthService } from './health.service';
 import {Request, Response} from 'express';
+import { HealthService } from './health.service';
 
 export class HealthController {
     async getHealth(req:Request, res:Response){

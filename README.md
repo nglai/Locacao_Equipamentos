@@ -10,7 +10,6 @@ npm i typescript -D => Instala typescript em dev
 npm i ts-node-dev -D => Biblioteca responsavel por converter o codigo ts para uma forma que o node entenda. Evitar precisar usar tsc para transpilar em JS toda hora.
 tsc --init => Cria o tsconfig.json, traz algumas configurações de TS.
 
-No primeiro momento os dados serão locais, armazenadas em data.ts.
 
 A API deve ter uma rota GET/health que retornará um objeto JSON {healthCheck: true}
 Primeiro foi criada o controller que contém a implementação do retorno do objeto e responde a rota.
@@ -32,3 +31,14 @@ Erros do servidor (500-599).
 500 - Internal Server Error - Servidor encontrou uma situação que não sabe lidar
 
 A API cliente usada para simular foi o Postman.
+
+ORGANIZAÇÃO DAS PASTAS
+src
+ | app.js           => Classe app
+ | server.ts        => Server para iniciar o app
+ |__ api
+   |__ entidade     => Representação dos dados
+   |__ controller   => Aceita a solicitação e repassa para o service para que processe a solicitação e entregue a resposta ao cliente
+   |__ services     => Regras de negócio, validação, tratativa
+   |__ roter        => Rotas
+|__ health          => Verifica o funcionamento da api
