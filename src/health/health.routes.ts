@@ -1,10 +1,7 @@
-import Router, { request, response } from "express"
-import {Request, Response} from 'express';
-import { HealthController } from "./health.controller";
+import express from "express";
+import HealthController from "./health.controller";
+const healthRouter = express.Router();
 
-const healthRouter = Router();
-const controller = new HealthController()
-
-healthRouter.get('/health', controller.getHealth)
+healthRouter.get('/health', HealthController.getHealth);
 
 export {healthRouter};

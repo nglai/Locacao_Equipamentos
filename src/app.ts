@@ -1,13 +1,13 @@
 import express from 'express';
 import { healthRouter } from './health/health.routes'
-import { equipRouter } from "../src/equipaments/equipaments.router";
+import { equipmentsRouter } from './equipaments/equipments.routes'
 
 const app = express();
 
 app.use(express.json());
 
-app.use(healthRouter)
-
-app.use(equipRouter)
+// Rotas
+app.use(healthRouter);
+app.use('/equipments', equipmentsRouter);
 
 app.listen(3333, () => {console.log('Servidor rodando!')});
