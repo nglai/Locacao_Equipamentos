@@ -4,5 +4,7 @@ const equipmentsRouter = express.Router();
 
 equipmentsRouter.get('/list', EquipmentsController.getList);
 equipmentsRouter.post('/add', EquipmentsController.add);
+equipmentsRouter.patch('/modifier/:id', EquipmentsController.modifier)
+equipmentsRouter.delete('/delete/:id', EquipmentsController.delete)
 
 export {equipmentsRouter};

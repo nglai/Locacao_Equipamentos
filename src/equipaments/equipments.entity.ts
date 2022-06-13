@@ -1,12 +1,12 @@
 import { v4 as uuid } from 'uuid';
 
 class EquipmentEntity {
-  private codigo: string;
-  private name: string;
+  codigo: string;
+  name: string;
 
-  constructor(params: { name: string}){
+  constructor(name: string){
     this.codigo = uuid();
-    this.name = params.name;
+    this.name = name;
   }
 
   getState(): Equipment{
