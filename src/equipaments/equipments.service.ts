@@ -1,4 +1,6 @@
+import { EquipmentsDto } from './dto/equipments.dto';
 import { EquipmentEntity, Equipment } from './equipments.entity';
+
 
 class EquipmentsService {
   private equipments: EquipmentEntity[] = [];
@@ -7,7 +9,7 @@ class EquipmentsService {
         return this.equipments.map(equipment => equipment.getState());
     }
 
-    async createEquipment(params: { name: string }): Promise<Equipment>{
+    async createEquipment(params: EquipmentsDto.CreateEquipmentDto): Promise<Equipment>{
       if (!params?.name)
         throw 'É necessário informar um nome para criar um equipamento.';
 
@@ -17,19 +19,28 @@ class EquipmentsService {
       return equipment.getState();
   }
 
-  async modifierEquipment(params: { name: string } , id: string): Promise<Equipment> {
+  async modifierEquipment(params: EquipmentsDto.ModifierEquipmentDto): Promise<Equipment> {
+    const {id, name} = params
     const index = this.equipments.findIndex(item => item.getState().codigo === id)
 
     if(!this.equipments[index]){
       throw 'O código do equipamento informado não existe!'
     }
 
-    const {name} = params
     this.equipments[index].update({name})
 
     return this.equipments[index].getState()
   }
 
+  async deleteEquipment(id: string) {
+    const index = this.equipments.findIndex(item => item.getState().codigo === id)
+
+    if(!this.equipments[index]){
+      throw 'O código do equipamento informado não existe!'
+    }
+
+    return this.equipments.splice(index, 1)
+  }
   
 }
 
