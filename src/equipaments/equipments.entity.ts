@@ -15,6 +15,10 @@ class EquipmentEntity {
       name: this.name
     }
   }
+
+  update(params: { name: string}){
+    this.name = params.name;
+  }
 }
 
 type Equipment = {

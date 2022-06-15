@@ -5,4 +5,5 @@ const equipmentsRouter = express.Router();
 equipmentsRouter.get('/list', EquipmentsController.getList);
 equipmentsRouter.post('/add', EquipmentsController.add);
 
+
 export {equipmentsRouter};

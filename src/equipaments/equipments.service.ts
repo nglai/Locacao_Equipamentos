@@ -16,6 +16,19 @@ class EquipmentsService {
 
       return equipment.getState();
   }
+
+  async modifierEquipment(params: { name: string } , id: string): Promise<Equipment> {
+    const index = this.equipments.findIndex(item => item.getState().codigo === id)
+
+    if(!this.equipments[index]){
+      throw 'O código do equipamento informado não existe!'
+    }
+
+    const {name} = params
+    this.equipments[index].update({name})
+
+    return this.equipments[index].getState()
+  }
 }
 
 export default new EquipmentsService();
