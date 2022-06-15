@@ -14,6 +14,23 @@ class EquipmentsController {
       });
     }
 
+    async modifier(req:Request, res: Response){
+      try {
+        await EquipmentsService.modifierEquipment({name: req.body.name}, req.params.id)
+        res.status(200).send(`Equipamento modificado com sucesso!`)
+      } catch (error) {
+        res.status(400).send({error});
+      }
+    }
+  
+    // async delete(req:Request, res: Response){
+    //   try {
+    //     await EquipmentsService.deleteEquipment(req.params.id)
+    //     res.status(200).send(`Equipamento deletado com sucesso!`)
+    //   } catch (error) {
+    //     res.status(400).send({error});
+    //   }
+    // }
 
 }
 

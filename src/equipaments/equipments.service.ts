@@ -29,6 +29,8 @@ class EquipmentsService {
 
     return this.equipments[index].getState()
   }
+
+  
 }
 
 export default new EquipmentsService();
