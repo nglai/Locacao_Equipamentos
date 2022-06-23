@@ -13,6 +13,9 @@ class EquipmentsService {
       if (!params?.name)
         throw 'É necessário informar um nome para criar um equipamento.';
 
+      if (!params?.valorLocacao)
+        throw 'É necessário informar um valor de locação para criar um equipamento.';
+
       const equipment = new EquipmentEntity(params);
       this.equipments.push(equipment);
 
@@ -20,14 +23,14 @@ class EquipmentsService {
   }
 
   async modifierEquipment(params: EquipmentsDto.ModifierEquipmentDto): Promise<Equipment> {
-    const {id, name} = params
+    const {id, name, valorLocacao} = params
     const index = this.equipments.findIndex(item => item.getState().codigo === id)
 
     if(!this.equipments[index]){
       throw 'O código do equipamento informado não existe!'
     }
-
-    this.equipments[index].update({name})
+    
+    this.equipments[index].update({name, valorLocacao})
 
     return this.equipments[index].getState()
   }
@@ -38,7 +41,7 @@ class EquipmentsService {
     if(!this.equipments[index]){
       throw 'O código do equipamento informado não existe!'
     }
-
+    
     return this.equipments.splice(index, 1)
   }
   
