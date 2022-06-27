@@ -16,6 +16,9 @@ class EquipmentsService {
       if (!params?.valorLocacao)
         throw 'É necessário informar um valor de locação para criar um equipamento.';
 
+      if (typeof params.valorLocacao !== "number")
+        throw 'É necessário informar um número no valor de locação.';
+
       const equipment = new EquipmentEntity(params);
       this.equipments.push(equipment);
 

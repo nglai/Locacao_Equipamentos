@@ -19,14 +19,13 @@ class EquipmentEntity {
     }
   }
 
-  update(params: { name: string, valorLocacao: number}){
-    if(!params.name){
-      name: this.name
-    } else {this.name = params.name;}
-    if(!params.valorLocacao){
-      valorLocacao: this.valorLocacao
-    } else {this.valorLocacao = params.valorLocacao}
-    
+  update(params: { name?: string, valorLocacao?: number}){
+    this.name = params.name ?? this.name
+    this.valorLocacao = params.valorLocacao ?? this.valorLocacao
+    // Object.keys(params).forEach( item => {
+    //   if(params[item] !== undefined) this[item] = params[item]
+    // })
+    //params["name"] === params.name
     return {
       codigo: this.codigo,
       name: this.name,
