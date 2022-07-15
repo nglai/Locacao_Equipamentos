@@ -16,7 +16,9 @@ class EquipmentsController {
 
     async modifier(req:Request, res: Response){
       try {
-        await EquipmentsService.modifierEquipment({name: req.body.name, id: req.params.id})
+        const {name, valorLocacao} = req.body;
+        const {id} = req.params;
+        await EquipmentsService.modifierEquipment({name, valorLocacao, id})
         res.status(200).send(`Equipamento modificado com sucesso!`)
       } catch (error) {
         res.status(400).send({error});
