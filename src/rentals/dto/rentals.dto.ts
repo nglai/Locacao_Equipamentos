@@ -8,7 +8,6 @@ export namespace RentalsDto {
         quantity: number
     }
     export type ModifyRentalDto = {
-
         itemsRentals: RentalItem []
         equipment: EquipmentEntity
         quantity: number

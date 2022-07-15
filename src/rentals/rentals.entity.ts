@@ -11,11 +11,12 @@ class RentalEntity {
     constructor(params: RentalItem) {
         this.codigo = uuid();
         this.itemsRentals.push(params)
+        console.log("params", params)
         this.createdDate = new Date()
        
     }
 
-    getState():State{
+    getState():DetailsRental{
         return {
             codigo: this.codigo,
             itemsRentals: this.itemsRentals,
@@ -39,10 +40,10 @@ type RentalItem = {
     quantity: number
 }
 
-type State = {
+type DetailsRental = {
     codigo: string
     itemsRentals: RentalItem []
     createDate: Date
 }
 
-export { RentalEntity, RentalItem };
+export { RentalEntity, RentalItem, DetailsRental };
